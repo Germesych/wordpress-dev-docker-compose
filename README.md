@@ -5,6 +5,7 @@
 * docker: 3.3
 * php: 7.4
 * mysql: 5.7
+* wordpress-6.2.2
 ###### Внешние порты на вашу локальную машину:
 * phpmyadmin port: localhost:8081
 * wordpress site port: localhost:80
