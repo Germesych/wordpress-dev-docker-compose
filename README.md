@@ -127,5 +127,45 @@ docker images
 docker rmi IMAGE_ID_образа
 ```
 
+### Сам docker-compose.yml содержит:
+```yml
+version: '3.3'
+services:
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:php7.4
+     volumes:
+       - ./wordpress:/var/www/html:rw
+     ports:
+       - "80:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: pwd12345a
+       WORDPRESS_DB_NAME: wordpress
+   db:
+     image: mysql:5.7
+     volumes:
+       - ./mysql:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: pwd12345a
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: pwd12345a
+   phpmyadmin:
+     depends_on:
+       - db
+     image: phpmyadmin/phpmyadmin
+     restart: always
+     ports:
+       - "8081:80"
+     environment:
+       PMA_HOST: db
+       MYSQL_ROOT_PASSWORD: pwd12345a
+```
+
 
 
