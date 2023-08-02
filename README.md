@@ -18,6 +18,14 @@ usermod -a -G $USER www-data
 ```bash
 usermod -a -G root www-data
 ```
+#### Или как вариант добавить своего пользователя и дать права рекурсивно:
+```bash
+sudo chgrp -R $USER ./wordpress
+```
+```bash
+sudo chmod -R g+rw ./wordpress
+```
+
 
 #### Запустить проект (в папке с yml файлом)
 ```bash
